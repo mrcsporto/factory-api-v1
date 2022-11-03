@@ -1,7 +1,7 @@
 # Factory Api
 This was the coolest API build I've ever done! I learned about:
 
-* [API Documentation](https://documenter.getpostman.com/view/23374730/2s8YRnnsPM) 
+* [API Documentation](https://documenter.getpostman.com/view/23374730/2s8YY9v6YQ) 
 * Active Model Serializer
 * Active Record Associations
 * State Machine
