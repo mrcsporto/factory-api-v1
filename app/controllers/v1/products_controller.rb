@@ -9,7 +9,7 @@ module V1
 				@products = Product.where(product_sku: params[:product_sku])
 				render json: @products
 			else
-				@products = Product.all.page(params[:page]).sort()
+				@products = Product.all.page(params[:page])
 				render json: @products
 			end
 		end
