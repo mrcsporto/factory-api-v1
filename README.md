@@ -20,7 +20,7 @@ $ rails db:migrate
 ```
 ##### Populate database
 ```sh
-$ rails dev:setup
+$ rails db:seed
 ```
 ### Features
 ```sh
