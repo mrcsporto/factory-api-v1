@@ -3,12 +3,20 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  Rails.application.routes.default_url_options = {
-    host: 'factory-api-v1.herokuapp.com',
-    path: 'api/v1'
-    port: 3000
-  }
+  # Rails.application.routes.default_url_options = {
+  #   host: 'factory-api-v1.herokuapp.com',
+  #   path: 'api/v1'
+  #   port: 3000
+  # }
     
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true
