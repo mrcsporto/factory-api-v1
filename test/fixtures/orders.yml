@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aasm_state: MyString
+  product: one
+  inventory_center: one
+
+two:
+  aasm_state: MyString
+  product: two
+  inventory_center: two

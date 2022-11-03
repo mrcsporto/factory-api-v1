@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_sku: MyString
+  quantity: 1
+  inventory_center: one
+
+two:
+  product_sku: MyString
+  quantity: 1
+  inventory_center: two
