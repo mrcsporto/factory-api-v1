@@ -6,7 +6,7 @@ Rails.application.configure do
   Rails.application.routes.default_url_options = {
     host: 'factory-api-v1.herokuapp.com',
     path: 'api/v1'
-    port: 5000
+    port: 3000
   }
     
 
