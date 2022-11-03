@@ -3,6 +3,13 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  Rails.application.routes.default_url_options = {
+    host: 'factory-api-v1.herokuapp.com',
+    path: 'api/v1'
+    port: 5000
+  }
+    
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
