@@ -1,4 +1,7 @@
 class InventoryCenter < ApplicationRecord
+  validates :name, length: { minimum: 2 }, format: { 
+    with: /[a-zA-Z]/, message: "Must contain only letters.", presence: true 
+  }
   has_many :products, dependent: :destroy
   has_many :orders
 

@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   include AASM
+  validates :aasm_state, :product_id, :inventory_center_id, presence: true
 	belongs_to :inventory_center
 	belongs_to :product
 
