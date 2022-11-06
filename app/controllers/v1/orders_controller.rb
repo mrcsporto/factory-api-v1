@@ -55,7 +55,12 @@ module V1
     private
       def set_inventory_center
         if params[:inventory_center_id]
-          @inventory_center = InventoryCenter.find(params[:inventory_center_id])
+          if InventoryCenter.where(id: params[:inventory_center_id]).any?
+            @inventory_center = InventoryCenter.find(params[:inventory_center_id])
+          else
+            @inventory_center = params[:inventory_center_id]
+            render json: { success: false, inventory_center_id: @inventory_center, response: "Inventory Center does NOT exists." }, status: :unprocessable_entity
+          end
         else
           @inventory_center = InventoryCenter.all
         end
@@ -100,7 +105,7 @@ module V1
         }
       end
 
-      def json_notfound_response(response, message: 'Order id not found', success: false, status: :unprocessable_entity)
+      def json_notfound_response(response, message: '', success: false, status: :unprocessable_entity)
         render json: {
           success: success,
           message: "Order id " + @order.as_json(root: true, only: :id) + " not found!",
