@@ -45,8 +45,10 @@ module V1
       elsif @order.consumed?
         @order.cancel!
         json_cancel_response(@order)
+      elsif @order.canceled?
+        render json: { success: false, order_id: @order.id, response: "Order already canceled" }, status: :unprocessable_entity
       else
-        render json: @order.errors, status: :unprocessable_entity
+        render json: @order.errors, status: :unprocessable_entity, message: 'Order Consumed'
       end
     end
 
@@ -61,7 +63,12 @@ module V1
 
       def set_order
         if params[:id]
-          @order = Order.find(params[:id])
+          if Order.where(id: params[:id]).any?
+            @order = Order.find(params[:id])
+          else
+            @order = params[:id]
+            json_notfound_response(@order)
+          end
         else
           @order = Order.all
         end
@@ -90,6 +97,13 @@ module V1
           success: success,
           message: message,
           response: @order.as_json(root: true, only: :id)
+        }
+      end
+
+      def json_notfound_response(response, message: 'Order id not found', success: false, status: :unprocessable_entity)
+        render json: {
+          success: success,
+          message: "Order id " + @order.as_json(root: true, only: :id) + " not found!",
         }
       end
 
