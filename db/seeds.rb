@@ -24,6 +24,7 @@
       Random.rand(10).times do |i|
         products = Product.create!(
           product_sku:Faker::Barcode.ean(8),
+          inventory_center_id: inventory.id,
           quantity:Faker::Number.between(from: 1, to: 1000)
         )
 

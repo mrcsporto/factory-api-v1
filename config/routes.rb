@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   
   api_version(:module => "V1", :path => {:value => "api/v1"}) do
-    resources :products, only: [:index, :show, :create]
+    resources :products, only: [:index, :show, :create, :update]
     
     resources :inventory_centers do
       resource :products, only: [:show]
